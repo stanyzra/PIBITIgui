@@ -1,7 +1,7 @@
 #import importar_arquivo
 import gerarArqDiss
 import numpy as np
-import os
+import os, sys
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 
@@ -46,7 +46,9 @@ def knn(train_feat = [], train_label = [], test_feat = [], test_label = []):
         a += 1
         
     print("Número de acertos: ", acertos)
+    sys.stdout.flush()
     print("Porcentagem de acerto: ", ((acertos/len(predict))*100))
+    sys.stdout.flush()
 
 def rf(train_feat = [], train_label = [], test_feat = [], test_label = []):
     
@@ -86,7 +88,9 @@ def rf(train_feat = [], train_label = [], test_feat = [], test_label = []):
         a += 1
         
     print("Número de acertos: ", acertos)
+    sys.stdout.flush()
     print("Porcentagem de acerto: ", ((acertos/len(predict))*100))
+    sys.stdout.flush()
    
 def svm(train_feat = [], train_label = [], test_feat = [], test_label = []):
         

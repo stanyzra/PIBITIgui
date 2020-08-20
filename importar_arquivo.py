@@ -1,9 +1,14 @@
+import sys, os
 import numpy as np
 import scripts
+os.chdir(r'../pibiti/')
 
 def importar():
-    fileh = open("features/lbp.txt", "r")
-        
+    print("Separando as amostras de treino e de teste...")
+    sys.stdout.flush()
+
+    fileh = open("features/data.txt", "r")
+
     conteudo = fileh.readlines()
     
     fileh.close()
@@ -29,7 +34,6 @@ def importar():
     # Criação das labens (rótulos/classes) para o classificador
     tel = []
 
-    print("Separando as amostras de treino e de teste...")
     for linha in range(len(conteudo)):
         
         # A cada 5 amostras troca-se a pessoa
@@ -52,18 +56,39 @@ def importar():
     trl = np.float16(trl)
     tef = np.float16(tef)
     tel = np.float16(tel)
-    
-    select = int(input("Selecione a classificacao"))
 
-    if select == 1:
-        scripts.knn(trf,trl,tef,tel)
-    elif select == 2: 
-        scripts.rf(trf,trl,tef,tel)
-    elif select == 3:
-        scripts.svm(trf,trl,tef,tel)
-    elif select == 4:
-        scripts.diss(trf,trl,tef,tel)
-    elif select == 5:
-        scripts.fusao(trf,trl,tef,tel)
-    
+    print("action loading false")
+    sys.stdout.flush()
+
+    select = ""
+
+    while(True):
+        if (select == ""):
+            print("action class")
+            sys.stdout.flush()
+            select = int(input())
+            sys.stdout.flush()
+        print("action loading true")
+        sys.stdout.flush()
+
+        if select == 0:
+            scripts.knn(trf,trl,tef,tel)
+        elif select == 1: 
+            scripts.rf(trf,trl,tef,tel)
+        elif select == 2:
+            scripts.svm(trf,trl,tef,tel)
+        elif select == 3:
+            scripts.diss(trf,trl,tef,tel)
+        elif select == 4:
+            scripts.fusao(trf,trl,tef,tel)
+
+        
+        print("action final")
+        sys.stdout.flush()
+
+        print("action while")
+        sys.stdout.flush()
+        select = int(input())
+        sys.stdout.flush()
+
 importar()
