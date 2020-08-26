@@ -335,13 +335,13 @@ def fusao(train_feat = [], train_label = [], test_feat = [], test_label = []):
     
 #    print("Iniciando a fusão dos arquivos {} e {}...".format(arquivo1, arquivo2))
     print("Iniciando fusão")
-    features_to_svm_train_test("features/lbp.txt", 80, 5, 3, 2)
+    features_to_svm_train_test("features/data1.txt", 80, 5, 3, 2)
 
     arquivo = open("libsvm-3.24/tools/fusaoTeste.txt.predict", "r")
     predict1 = arquivo.readlines()
     arquivo.close()
     
-    features_to_svm_train_test("features/ssd.txt", 80, 5, 3, 2)
+    features_to_svm_train_test("features/data2.txt", 80, 5, 3, 2)
 
     arquivo = open("libsvm-3.24/tools/fusaoTeste.txt.predict", "r")
     predict2 = arquivo.readlines()

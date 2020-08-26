@@ -7,7 +7,7 @@ def importar():
     print("Separando as amostras de treino e de teste...")
     sys.stdout.flush()
 
-    fileh = open("features/data.txt", "r")
+    fileh = open("features/data1.txt", "r")
 
     conteudo = fileh.readlines()
     
@@ -79,7 +79,7 @@ def importar():
             scripts.svm(trf,trl,tef,tel)
         elif select == 3:
             scripts.diss(trf,trl,tef,tel)
-        elif select == 4:
+        elif select == 4 and os.path.exists('features/data2.txt'):
             scripts.fusao(trf,trl,tef,tel)
 
         
