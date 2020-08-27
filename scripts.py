@@ -8,6 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 #import gerar_arq_diss
 
 def knn(train_feat = [], train_label = [], test_feat = [], test_label = []):
+    sys.stdout.reconfigure(encoding='utf-8')
     
     clf = KNeighborsClassifier(n_neighbors = 1)
     
@@ -44,7 +45,6 @@ def knn(train_feat = [], train_label = [], test_feat = [], test_label = []):
             acertos += 1 
           
         a += 1
-        
     print("Número de acertos: ", acertos)
     sys.stdout.flush()
     print("Porcentagem de acerto: ", ((acertos/len(predict))*100))

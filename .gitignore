@@ -2,3 +2,8 @@ __pycache__
 features/data.txt
 features/data1.txt
 features/data2.txt
+libsvm-3.24/tools/fusaoTeste.txt.predict
+libsvm-3.24/tools/fusaoTeste.txt.scale
+libsvm-3.24/tools/fusaoTreino.txt.model
+libsvm-3.24/tools/fusaoTreino.txt.scale.out
+predicts
