@@ -57,18 +57,18 @@ def importar():
     tef = np.float16(tef)
     tel = np.float16(tel)
 
-    print("action loading false")
+    print("action && loading && false")
     sys.stdout.flush()
 
     select = ""
 
     while(True):
         if (select == ""):
-            print("action class")
+            print("action && class")
             sys.stdout.flush()
             select = int(input())
             sys.stdout.flush()
-        print("action loading true")
+        print("action && loading && true")
         sys.stdout.flush()
 
         if select == 0:
@@ -83,10 +83,10 @@ def importar():
             scripts.fusao(trf,trl,tef,tel)
 
         
-        print("action final")
+        print("action && final")
         sys.stdout.flush()
 
-        print("action while")
+        print("action && while")
         sys.stdout.flush()
         select = int(input())
         sys.stdout.flush()

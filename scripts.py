@@ -45,9 +45,9 @@ def knn(train_feat = [], train_label = [], test_feat = [], test_label = []):
             acertos += 1 
           
         a += 1
-    print("Número de acertos: ", acertos)
-    sys.stdout.flush()
-    print("Porcentagem de acerto: ", ((acertos/len(predict))*100))
+
+    print("action && result && Número de acertos &value& ", acertos, sep="")
+    print("action && result && Porcentagem de acerto &value& ", ((acertos/len(predict))*100), sep="")
     sys.stdout.flush()
 
 def rf(train_feat = [], train_label = [], test_feat = [], test_label = []):
@@ -87,9 +87,9 @@ def rf(train_feat = [], train_label = [], test_feat = [], test_label = []):
           
         a += 1
         
-    print("Número de acertos: ", acertos)
+    print("action && result && Número de acertos &value& ", acertos, sep="")
     sys.stdout.flush()
-    print("Porcentagem de acerto: ", ((acertos/len(predict))*100))
+    print("action && result && Porcentagem de acerto: &value& ", ((acertos/len(predict))*100), sep="")
     sys.stdout.flush()
    
 def svm(train_feat = [], train_label = [], test_feat = [], test_label = []):
