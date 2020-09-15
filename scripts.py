@@ -94,7 +94,9 @@ def rf(train_feat = [], train_label = [], test_feat = [], test_label = []):
    
 def svm(train_feat = [], train_label = [], test_feat = [], test_label = []):
         
-    print("gerando arquivo de treino...")  
+    print("exec && svm && init")
+    sys.stdout.flush()
+    # print("gerando arquivo de treino...")  
 
     x = np.array(train_feat)
             
@@ -118,7 +120,7 @@ def svm(train_feat = [], train_label = [], test_feat = [], test_label = []):
         fileTreino.write("\n")
     fileTreino.close()
     
-    print("gerando arquivo de teste...")  
+    # print("gerando arquivo de teste...")  
 
     y = np.array(test_feat)
        
@@ -156,10 +158,14 @@ def svm(train_feat = [], train_label = [], test_feat = [], test_label = []):
     os.system(comando)
     os.chdir('./../../')
     print("SVM Finalizado...")
+    sys.stdout.flush()
+    print("exec && svm && end")
+    sys.stdout.flush()
     
    
 def diss(train_feat = [], train_label = [], test_feat = [], test_label = []):
     
+    sys.stdout.flush()
        # Número total de classes
     num_classes = 80
     # n é o numero de amostras do treinamento
@@ -170,10 +176,10 @@ def diss(train_feat = [], train_label = [], test_feat = [], test_label = []):
     vp = []
     x = np.array(train_feat)
     #x = [[1, 1, 1], [2, 2, 2], [3, 3, 3], [4, 4, 4], [5, 5, 5], [6, 6, 6], [7, 7, 7], [8, 8, 8], [9, 9, 9], [10, 10, 10], [11, 11, 11], [12, 12, 12]]
-    print("Criando vetores positivos...")
-    print("Subtração de i - i+1")
-    print("Subtração de i - i+2")
-    print("Subtração de i+1 - i+2")
+    # print("Criando vetores positivos...")
+    # print("Subtração de i - i+1")
+    # print("Subtração de i - i+2")
+    # print("Subtração de i+1 - i+2")
     
     for i in range(0, n, p):
         #print("Contador positivo: {}".format(i))
@@ -192,8 +198,8 @@ def diss(train_feat = [], train_label = [], test_feat = [], test_label = []):
    # print("contador: {}".format(i))
     # vn é o array de vetores negativos
     vn = []
-    print("Criando vetores negativos...")
-    print("Subtração de i - i+p")
+    # print("Criando vetores negativos...")
+    # print("Subtração de i - i+p")
     for i in range(0, n-p):
         #print("Contador negativo: {}".format(i))
         v1 = abs(np.float16(x[i]) - np.float16(x[i+p]))
@@ -204,7 +210,8 @@ def diss(train_feat = [], train_label = [], test_feat = [], test_label = []):
         
    # print("contador: {}".format(i))
     gerarArquivoTreino(vp,vn)
-    print("gerando arquivo de treino...")  
+    print("Gerando arquivos...")  
+    sys.stdout.flush()
     gerarArqDiss.gerar(test_feat)
 
     # Executa o LIBSVM
@@ -286,7 +293,9 @@ def diss(train_feat = [], train_label = [], test_feat = [], test_label = []):
                 
         pos_vetor += total_amostras
         
-    print("Acertos: {}/{} = {}%".format(acertos, total_amostras, (acertos/total_amostras)*100))
+    print("action && result && Acertos &value& {}/{} = {}%".format(acertos, total_amostras, (acertos/total_amostras)*100))
+    sys.stdout.flush()
+    # print("Acertos: {}/{} = {}%".format(acertos, total_amostras, (acertos/total_amostras)*100))
 
 #aqui geramos os arquivos .txt do vetor POSITIVO com sua label e sua respectiva característica
     
@@ -334,7 +343,11 @@ def fusao(train_feat = [], train_label = [], test_feat = [], test_label = []):
     
     
 #    print("Iniciando a fusão dos arquivos {} e {}...".format(arquivo1, arquivo2))
+    print("exec && fusao && init")
+    sys.stdout.flush()
     print("Iniciando fusão")
+    sys.stdout.flush()
+
     features_to_svm_train_test("features/data1.txt", 80, 5, 3, 2)
 
     arquivo = open("libsvm-3.24/tools/fusaoTeste.txt.predict", "r")
@@ -406,6 +419,9 @@ def fusao(train_feat = [], train_label = [], test_feat = [], test_label = []):
     ler_predict("predicts/predictSoma.txt", 2)
     ler_predict("predicts/predictProduto.txt", 2)
     ler_predict("predicts/predictMax.txt", 2)
+
+    print("exec && fusao && end")
+    sys.stdout.flush()
     
 def ler_predict(nome_arquivo, amostras_por_classe, classe_inicial=0):
 
