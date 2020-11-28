@@ -101,7 +101,7 @@ def converterEClassificar(dir_conversao, base):
     
     
     # Executa o libsvm
-    comando_easy = 'python easyDiego.py ..\..\%s\%s' %(dir_conversao,'convertido-'+base+'.svm')
+    comando_easy = 'python easy_sistema.py ..\..\%s\%s' %(dir_conversao,'convertido-'+base+'.svm')
     os.system(comando_easy)
     print(comando_easy)
     #print comando_easy
