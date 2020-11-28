@@ -53,9 +53,9 @@ def importar():
         cont += 1
         
     trf = np.float16(trf)
-    trl = np.float16(trl)
+    trl = np.int16(trl)
     tef = np.float16(tef)
-    tel = np.float16(tel)
+    tel = np.int16(tel)
 
     print("action && loading && false")
     sys.stdout.flush()

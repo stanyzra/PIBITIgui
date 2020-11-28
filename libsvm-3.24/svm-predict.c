@@ -149,15 +149,9 @@ void predict(FILE *input, FILE *output)
 			((total*sumpp-sump*sump)*(total*sumtt-sumt*sumt))
 			);
 	}
-	else{
-		info("waddwa");
-			FILE *fp;
-			fp = fopen("./resultado.txt", "w");
-			double resultado = correct/total*100;
-			fprintf(fp,"%d",resultado);
-			fclose(fp);
-	}
-			
+	else
+		info("Accuracy = %g%% (%d/%d) (classification)\n",
+			(double)correct/total*100,correct,total);
 	if(predict_probability)
 		free(prob_estimates);
 }

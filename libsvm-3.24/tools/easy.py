@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import sys
 import os
 from subprocess import *
@@ -11,9 +12,15 @@ if len(sys.argv) <= 1:
 
 is_win32 = (sys.platform == 'win32')
 if not is_win32:
-	svmscale_exe = "../svm-scale"
-	svmtrain_exe = "../svm-train"
-	svmpredict_exe = "../svm-predict"
+    #svmscale_exe = "../windows/svm-scale.exe"
+    #svmtrain_exe = "../windows/svm-train.exe"
+    #svmpredict_exe = "../windows/svm-predict.exe"
+    #grid_py = "./grid.py"
+    #gnuplot_exe = "c:/tmp/gnuplot/binary/pgnuplot.exe"
+    
+	svmscale_exe = "../svm-scale.c"
+	svmtrain_exe = "../svm-train.c"
+	svmpredict_exe = "../svm-predict.c"
 	grid_py = "./grid.py"
 	gnuplot_exe = "/usr/bin/gnuplot"
 else:
@@ -61,7 +68,7 @@ c,g,rate = map(float,last_line.split())
 
 print('Best c={0}, g={1} CV rate={2}'.format(c,g,rate))
 
-cmd = '{0} -c {1} -g {2} "{3}" "{4}"'.format(svmtrain_exe,c,g,scaled_file,model_file)
+cmd = '{0} -c {1} -g {2} -b 0 "{3}" "{4}"'.format(svmtrain_exe,c,g,scaled_file,model_file)
 print('Training...')
 Popen(cmd, shell = True, stdout = PIPE).communicate()
 
@@ -71,7 +78,7 @@ if len(sys.argv) > 2:
 	print('Scaling testing data...')
 	Popen(cmd, shell = True, stdout = PIPE).communicate()
 
-	cmd = '{0} "{1}" "{2}" "{3}"'.format(svmpredict_exe, scaled_test_file, model_file, predict_test_file)
+	cmd = '{0} -b 0 "{1}" "{2}" "{3}"'.format(svmpredict_exe, scaled_test_file, model_file, predict_test_file)
 	print('Testing...')
 	Popen(cmd, shell = True).communicate()
 

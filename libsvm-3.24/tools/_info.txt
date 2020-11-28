@@ -1,1 +1,1 @@
-Origem: D:/Mestrado/base_juliano_segmentada_manual_concatenada_6s_rp/
+Origem: .\folds\folds-brSD_audiofeat_audios\convertidos
