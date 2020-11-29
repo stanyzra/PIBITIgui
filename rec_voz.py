@@ -9,6 +9,9 @@ from scipy.io.wavfile import read
 import librosa, shutil
 import math
 import converte_e_classifica
+os.chdir(r'../pibiti/')
+sys.stdout.reconfigure(encoding='utf-8')
+
 def natural_sort(l): 
     convert = lambda text: int(text) if text.isdigit() else text.lower() 
     alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ] 
@@ -258,30 +261,21 @@ def encontrar_pessoa():
         label = (np.argmax(x))
         suspeitos.append(label)
         x[0][label] = 0
-    
     os.chdir(r"..\..\..\pibiti")
-    print("O sistema acredita que possa ser uma das três pessoas a seguir: (TOP 3) {}".format(suspeitos))
+    print("action && result && O sistema acredita que possa ser uma das três pessoas a seguir: (TOP 3) {}".format(suspeitos))
+    sys.stdout.flush()
 
 def pegar_audios(x):
     x = int(x)
     cont = 1
     dir_pessoas = r"arquivos_treino"
     base = os.listdir(dir_pessoas)
-    print("Em qual base deseja inlcuir?")
-    id_base = []
-    total_dir = len(os.listdir(dir_pessoas))
-    bases = os.listdir(dir_pessoas)
-    #print(len(os.listdir(dir_extracao)))
-    for i in range(total_dir):
-        print("{} - {}".format(i, bases[i]))
-        id_base.append(i)
-    decisao = int(input())
-    print(bases[decisao])
-    
-    dir_pessoas += r"\{}".format(bases[decisao])
+    #print("base: ", base)
+    dir_pessoas += r"\{}".format(base[0])
     extensao_txt = ".txt"
     nome_txt = [_ for _ in os.listdir(dir_pessoas) if _.endswith(extensao_txt)]
-        
+     
+    #print("DIR PESSOAS: ", dir_pessoas)
     file_pessoas = open(r"{}".format(dir_pessoas) + r"\{}".format(nome_txt[0]), 'r')
     print(r"{}".format(dir_pessoas) + r"\{}".format(nome_txt[0]))
     conteudo = file_pessoas.readlines()
@@ -295,13 +289,15 @@ def pegar_audios(x):
             audios += 1
     elif(x == 2):
         while(True):
-             print("Por favor, leia este trecho: ")
-             record_to_file((r"PIBITI\audios_gravados\{}".format(audios+1))+'.wav')
-             cont += 1
-             audios += 1
-             if(cont == 6): 
-                 print("Terminado")
-                 break
+            print("Por favor, leia este trecho: ")
+            print("action && text && {}".format(cont-1))
+            sys.stdout.flush()
+            record_to_file((r"PIBITI\audios_gravados\{}".format(audios+1))+'.wav')
+            cont += 1
+            audios += 1
+            if(cont == 6): 
+                print("Terminado")
+                break
     return audios
 
 if __name__ == '__main__':

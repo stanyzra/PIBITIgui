@@ -7,5 +7,6 @@ libsvm-3.24/tools/fusaoTeste.txt.scale
 libsvm-3.24/tools/fusaoTreino.txt.model
 libsvm-3.24/tools/fusaoTreino.txt.scale.out
 PIBITI/brSD_audiofeat_audios/*
+brSD_audiofeat_audios.rar
 backup
 predicts/*
