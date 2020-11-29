@@ -296,6 +296,10 @@ def pegar_audios(x):
             cont += 1
             audios += 1
             if(cont == 6): 
+                print("action && text_without && Gravação finalizada")
+                sys.stdout.flush()
+                print("action && loading && true && Realizando classificação")
+                sys.stdout.flush()
                 print("Terminado")
                 break
     return audios
@@ -343,6 +347,8 @@ if __name__ == '__main__':
             organizar_dados.organizarDados('PIBITI/', 'brSD_audiofeat_audios', audios-5)
             print("Convertendo e classificando")
             converte_e_classifica.converterEClassificar(r"arquivos_treino", r"brSD_audiofeat_audios")
+            print("action && result && Pessoa incluida com sucesso")
+            sys.stdout.flush()
         elif(int(comando) == 1):
             #IMPORTAR ARQUIVO COM INTERFACE, POIS NO TERMINAL É SÓ ARRASTAR OS ARQUIVOS
             audios = pegar_audios(comando)
